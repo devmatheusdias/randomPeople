@@ -2,7 +2,7 @@ import { connection } from "@/configs/db.connection";
 import { Person } from "@/protocols/person.protocol";
 
 async function countRegisters(): Promise<number>{
-    const result = await connection.query(`SELECT COUNT(*) AS total_registers FROM people;`)  
+    const result = await connection.query<Person>(`SELECT COUNT(*) AS total_registers FROM people;`)  
     return result.rowCount;
 }
 
